@@ -28,14 +28,11 @@ public class ImageResultAdapter extends ArrayAdapter<ImageResult> {
         }
         // Get references to the objects in the layout.xml
         ImageView ivImage = (ImageView) convertView.findViewById(R.id.ivImage);
-        ivImage.setImageResource(0);
+//        ivImage.setImageResource(0);
+        Picasso.with(getContext()).load(imageResult.getTbUrl()).into(ivImage);
         // Set the text for title from ImageResult
         TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
-        tvTitle.setText(imageResult.title);
-        Picasso.with(getContext()).load(imageResult.tbUrl).into(ivImage);
-
-
-
+        tvTitle.setText(imageResult.getTitle());
         //
         return convertView;
     }

@@ -7,9 +7,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ImageResult {
-    public String tbUrl;
-    public String url;
-    public String title;
+    private String tbUrl;
+    private String url;
+    private String title;
+
+    public String getTbUrl() {
+        return tbUrl;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 
     // New ImageResult from raw JSON
     public ImageResult(JSONObject json){
