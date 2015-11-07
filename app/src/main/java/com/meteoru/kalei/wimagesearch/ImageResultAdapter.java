@@ -1,6 +1,7 @@
 package com.meteoru.kalei.wimagesearch;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +33,8 @@ public class ImageResultAdapter extends ArrayAdapter<ImageResult> {
         Picasso.with(getContext()).load(imageResult.getTbUrl()).into(ivImage);
         // Set the text for title from ImageResult
         TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
-        tvTitle.setText(imageResult.getTitle());
-        //
+        tvTitle.setText(Html.fromHtml(imageResult.getTitle()));
+        // Return populated View
         return convertView;
     }
 }
