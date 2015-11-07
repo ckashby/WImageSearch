@@ -3,7 +3,6 @@ package com.meteoru.kalei.wimagesearch;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setupViews();
+    }
+
+    public void setupViews(){
+        etQuery = (EditText) findViewById(R.id.etQuery);
+        btSearch = (Button) findViewById(R.id.btSearch);
+        gvResults = (GridView) findViewById(R.id.gvResults);
         // Create the data source
         imageResults = new ArrayList<ImageResult>();
         // Attach the data source to the adapter
@@ -54,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
         client.get(searchUrl, new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        Log.d(TAG, response.toString());
+//                        Log.d(TAG, response.toString());
                         try {
                             JSONArray imageResultsJsonArray = response.getJSONObject("responseData").getJSONArray("results");
-                            Log.d(TAG, imageResultsJsonArray.toString());
+//                            Log.d(TAG, imageResultsJsonArray.toString());
                             imageResults.clear();
+                            // Use adapter's addAll() to update ArrayList<ImageResult>
                             aImageResult.addAll(ImageResult.fromJson(imageResultsJsonArray));
-//                            aImageResult.notifyDataSetChanged();
                         } catch (JSONException e){
                             e.printStackTrace();
                         }
@@ -74,12 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-    }
-
-    public void setupViews(){
-        etQuery = (EditText) findViewById(R.id.etQuery);
-        btSearch = (Button) findViewById(R.id.btSearch);
-        gvResults = (GridView) findViewById(R.id.gvResults);
     }
 
     @Override
