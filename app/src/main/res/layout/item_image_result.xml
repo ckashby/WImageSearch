@@ -10,7 +10,8 @@
         android:layout_height="120dp"
         android:layout_gravity="left"
         android:src="@mipmap/ic_launcher"
-        android:scaleType="center" />
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +19,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="sample"
         android:id="@+id/tvTitle"
-        android:maxLines="3"
+        android:maxLines="2"
         android:ellipsize="end"/>
 
 </LinearLayout>
