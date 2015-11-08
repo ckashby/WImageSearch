@@ -14,11 +14,11 @@
         android:adjustViewBounds="true"/>
 
     <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="sample"
-        android:id="@+id/tvTitle"
         android:maxLines="2"
         android:ellipsize="end"/>
 

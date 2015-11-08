@@ -1,11 +1,13 @@
 package com.meteoru.kalei.wimagesearch;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -24,6 +26,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String IMAGE_URL = "url";
     private EditText etQuery;
     private Button btSearch;
     private GridView gvResults;
@@ -49,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
         aImageResult = new ImageResultAdapter(this, imageResults);
         // Link the adapter to the GridView
         gvResults.setAdapter(aImageResult);
+        gvResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(MainActivity.this, WebViewActivity.class);
+                ImageResult imageResult = imageResults.get(position);
+                i.putExtra(IMAGE_URL, imageResult.getUrl());
+                startActivity(i);
+            }
+        });
     }
 
     public void onSearch(View view){
