@@ -18,7 +18,7 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().hide();
         ivFullSize = (ImageView) findViewById(R.id.ivFullSize);
         Intent i = getIntent();
         String imageUrl = i.getStringExtra(IMAGE_URL);
